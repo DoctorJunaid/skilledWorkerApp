@@ -19,3 +19,8 @@ buildscript {
 }
 
 apply plugin: "com.facebook.react.rootproject"
+tasks.whenTaskAdded { task ->
+    if (task.name.startsWith("configureCMake")) {
+        task.doNotTrackState("The task doesn't have well-defined inputs and outputs.")
+    }
+}
